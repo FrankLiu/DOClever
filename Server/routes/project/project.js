@@ -1,8 +1,8 @@
 /**
  * Created by sunxin on 2016/11/16.
  */
-var async=require("asyncawait/async")
-var await=require("asyncawait/await")
+// var async=require("asyncawait/async")
+// var await=require("asyncawait/await")
 var e=require("../../util/error.json");
 var util=require("../../util/util");
 var con=require("../../../config.json");

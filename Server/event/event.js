@@ -2,8 +2,8 @@
  * Created by sunxin on 2017/5/19.
  */
 var schedule = require("node-schedule");
-var async=require("asyncawait/async");
-var await=require("asyncawait/await");
+// var async=require("asyncawait/async");
+// var await=require("asyncawait/await");
 var moment=require("moment");
 var fs=require("fs");
 var temp=require("../model/tempModel");

@@ -5,8 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var async=require("asyncawait/async");
-var await=require("asyncawait/await");
+// var async=require("asyncawait/async");
+// var await=require("asyncawait/await");
 var util=require("./util/util");
 var app = express();
 // var webpack = require('../Client/node_modules/webpack'),
@@ -25,7 +25,7 @@ var app = express();
 //     }
 // }));
 // app.use(webpackHotMiddleware(compiler));
-(async (function () {
+(async function () {
     await (util.init());
     var checkUser=require("./routes/checkUser");
     var checkAdmin=require("./routes/checkAdmin");
@@ -89,7 +89,7 @@ var app = express();
         res.status(err.status || 500);
         res.render('error');
     });
-}))();
+})();
 
 
 module.exports = app;

@@ -1,8 +1,8 @@
 /**
  * Created by sunxin on 2017/4/13.
  */
-var async=require("asyncawait/async")
-var await=require("asyncawait/await")
+// var async=require("asyncawait/async")
+// var await=require("asyncawait/await")
 var e=require("../../util/error.json");
 var util=require("../../util/util");
 var user=require("../../model/userModel")

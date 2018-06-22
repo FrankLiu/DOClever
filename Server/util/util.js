@@ -8,8 +8,8 @@ var event=require("events");
 var express=require("express");
 var fs=require("fs");
 var path = require('path');
-var async=require("asyncawait/async")
-var await=require("asyncawait/await")
+// var async=require("asyncawait/async")
+// var await=require("asyncawait/await")
 var CryptoJS=require("crypto-js")
 var request=require("../third/requestAsync");
 var mongoose = require('mongoose');
@@ -321,7 +321,7 @@ let existAsync=function (filePath) {
     })
 }
 
-let getFileSize=async (function (filePath) {
+let getFileSize = async function (filePath) {
     let size=0;
     if(!filePath)
     {
@@ -337,7 +337,7 @@ let getFileSize=async (function (filePath) {
         }
     }
     return size;
-})
+}
 
 function getIPAdress(){
     var interfaces = require('os').networkInterfaces();
@@ -1035,7 +1035,7 @@ var runAfter=function (code,status,header,data) {
     }
 }
 
-var runTest=async (function (obj,global,test,root,opt) {
+var runTest= async function (obj,global,test,root,opt) {
     root.output+="["+moment().format("YYYY-MM-DD HH:mm:ss")+"]开始运行接口："+obj.name+"<br>"
     var name=obj.name
     var method=obj.method;
@@ -1504,9 +1504,9 @@ var runTest=async (function (obj,global,test,root,opt) {
             data:err
         }
     })
-})
+}
 
-var runTestCode=async (function (code,test,global,opt,root,argv,mode) {
+var runTestCode=async function (code,test,global,opt,root,argv,mode) {
     if(!testModel)
     {
         testModel=require("../model/testModel");
@@ -1769,7 +1769,7 @@ var runTestCode=async (function (code,test,global,opt,root,argv,mode) {
             break;
         }
     }
-    var ret=eval("(async (function () {"+evalText+"}))()").then(function (ret) {
+    var ret=eval("(async function () {"+evalText+"})()").then(function (ret) {
         var obj={
             argv:[]
         };
@@ -1826,7 +1826,7 @@ var runTestCode=async (function (code,test,global,opt,root,argv,mode) {
         return obj;
     });
     return ret;
-})
+}
 
 function updateTestInterfaceWithExample(objInter,objExample) {
     var obj={
@@ -2041,8 +2041,8 @@ function versionDiff(obj1,obj2) {
     }
 }
 
-var init=async (function () {
-    let setConfig=async (function () {
+var init=async function () {
+    let setConfig=async function () {
         if((!fs.existsSync(path.join(__dirname, "../../config.json")) || !require("../../config.json").db) && process.argv.length<=2)
         {
             con={};
@@ -2152,8 +2152,9 @@ var init=async (function () {
         {
             con.port=parseInt(argv.port);
         }
-    })
-    let patch=async (function () {
+    }
+
+    let patch=async function () {
         let curVersion=require("../../ver.json").version;
         var stat = fs.statSync(path.join(__dirname,"../patch"));
         if(!stat.isDirectory())
@@ -2205,15 +2206,15 @@ var init=async (function () {
             upsert:true,
             setDefaultsOnInsert:true
         }))
-    })
+    }
     await (setConfig());
     await (patch());
     require("../event/event");
     exports.event.emit("init");
     console.log("DOClever启动成功");
-})
+}
 
-var getMockParam=async (function(clientParam,obj,type,version) {
+var getMockParam=async function(clientParam,obj,type,version) {
     var arr=[];
     if(!statusModel)
     {
@@ -2320,7 +2321,7 @@ var getMockParam=async (function(clientParam,obj,type,version) {
         }
     }
     return obj.param[index];
-})
+}
 
 function handleResultData(name,data,result,originObj,show,input,bArr) {
     name=typeof(name)=="string"?name:null;
@@ -2540,7 +2541,7 @@ function parseURL(url) {
     };
 }
 
-let runPoll=async (function (arr) {
+let runPoll=async function (arr) {
     let poll=require("../model/pollModel");
     let test=require("../model/testModel");
     let user=require("../model/userModel");
@@ -2678,7 +2679,7 @@ let runPoll=async (function (arr) {
             sendSMS(method,baseUrl,param);
         }
     }
-})
+}
 
 function handleGlobalVar(str,global) {
     var type;
@@ -2761,7 +2762,7 @@ function getNowFormatDate(fmt,date) {
     return fmt;
 }
 
-var createStatistic=async (function() {
+var createStatistic=async function() {
     let inter=require("../model/interfaceModel");
     let project=require("../model/projectModel");
     let team=require("../model/teamModel");
@@ -2803,7 +2804,7 @@ var createStatistic=async (function() {
         }
     }))
     await (statistic.createAsync(obj));
-})
+}
 
 var formatJson = function (json, options) {
     var reg = null,
@@ -2865,7 +2866,7 @@ var formatJson = function (json, options) {
     return formatted;
 };
 
-var backup=async (function (db,version) {
+var backup=async function (db,version) {
     if(!db.dbPath || !db.host || !db.name || !db.backPath)
     {
         return
@@ -2884,9 +2885,9 @@ var backup=async (function (db,version) {
         str+=` -u ${db.user} -p ${db.pass} --authenticationDatabase ${db.authDb}`
     }
     await (child_process.execAsync(str));
-})
+}
 
-var restore=async (function (db,dir) {
+var restore=async function (db,dir) {
     if(!db.dbPath || !db.host || !db.name || !db.backPath)
     {
         return
@@ -2904,7 +2905,7 @@ var restore=async (function (db,dir) {
         str+=` -u ${db.user} -p ${db.pass} --authenticationDatabase ${db.authDb}`
     }
     await (child_process.execAsync(str));
-})
+}
 
 var removeFolder=function (path) {
     var files = [];

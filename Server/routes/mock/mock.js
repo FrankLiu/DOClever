@@ -2,8 +2,8 @@
  * Created by sunxin on 2017/2/5.
  */
 var express=require("express");
-var async=require("asyncawait/async")
-var await=require("asyncawait/await")
+// var async=require("asyncawait/async")
+// var await=require("asyncawait/await")
 var e=require("../../util/error.json");
 var util=require("../../util/util");
 var con=require("../../../config.json");

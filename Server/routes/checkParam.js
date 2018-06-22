@@ -5,8 +5,8 @@ var express=require("express");
 var user=require("../model/userModel");
 var e=require("../util/error.json");
 var util=require("../util/util");
-var async=require("asyncawait/async")
-var await=require("asyncawait/await")
+// var async=require("asyncawait/async")
+// var await=require("asyncawait/await")
 function route(category) {
     var router = util.router(category);
     if(router instanceof Array)

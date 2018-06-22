@@ -1,5 +1,5 @@
-var async=require("asyncawait/async")
-var await=require("asyncawait/await")
+// var async=require("asyncawait/async")
+// var await=require("asyncawait/await")
 var user=require("../../model/userModel")
 var group=require("../../model/groupModel")
 var apply=require("../../model/applyModel")

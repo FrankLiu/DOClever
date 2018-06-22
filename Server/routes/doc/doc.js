@@ -1,5 +1,5 @@
-var async=require("asyncawait/async")
-var await=require("asyncawait/await")
+// var async=require("asyncawait/async")
+// var await=require("asyncawait/await")
 var pdf = require('html-pdf');
 var md = require('markdown-it')();
 var con=require("../../../config.json")
